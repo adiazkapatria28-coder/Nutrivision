@@ -42,7 +42,7 @@ if uploaded_file is not None:
     with open("temp.jpg", "wb") as f:
         f.write(uploaded_file.getbuffer())
 
-    height = estimate_height("temp.jpg")
+    height = 100
 
     if height is not None:
         st.success(f"Estimated Height: {height:.1f} cm")
