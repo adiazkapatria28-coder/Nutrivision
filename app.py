@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
-from vision import estimate_height
+## from vision import estimate_height
 
 # Load models
 stunting_model = joblib.load("stunting_model.pkl")
@@ -42,7 +42,10 @@ if uploaded_file is not None:
     with open("temp.jpg", "wb") as f:
         f.write(uploaded_file.getbuffer())
 
-    height = 100
+    if uploaded_file is not None:
+        from vision import estimate_height
+
+        height = estimate_height("temp.jpg")
 
     if height is not None:
         st.success(f"Estimated Height: {height:.1f} cm")
